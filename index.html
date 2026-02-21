@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabam Production</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --gold: #d4af37;
+            --gold-dark: #b8941f;
+            --gray: #333;
+            --white: #fff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            padding: 10px 40px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 10px 1px ;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            padding: 0 2rem;
+        
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;              /* space between logo & text */
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .logo img {
+            height: 55px;           /* control logo size */
+            width: auto;
+            margin-right:10px;
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding-bottom: 250px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(9, 9, 9, 0.8), rgba(0, 0, 0, 0.9));
+            z-index: 1;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 1rem);
+            font-style: oblique;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--white), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-top: 250px;
+        }
+        .hero h3 {
+            font-size: 25px;
+            font-style: italic;
+            font-weight: 600;
+            padding-bottom: 50px;
+             background: linear-gradient(45deg, var(--white), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-decoration: underline rgb(237, 216, 100)
+        }
+       
+    
+        .hero p {
+            font-size: 23px;
+            font-style: italic;
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--white), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-top: 10px;
+               
+        }
+
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            padding-bottom: 20px 80px;
+            margin-top: 60px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(212,175,55,0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About */
+        .about {
+            background: var(--black);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 1rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+         .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f4f5f8;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .about-text p {
+            bottom: 20px;
+            font-style: italic;
+        }
+        
+        .mission-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .mission-title {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .mission-title::after {
+            content: '';
+            position: absolute;
+            bottom: 165px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .mission-text {
+            font-size: 1.3rem;
+            color: #f7f8fa;
+            font-style: italic;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #fffeff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        /* Movies Grid */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .movie-card {
+            position: relative;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: var(--gray);
+        }
+
+        .movie-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .movie-card:hover .movie-poster {
+            transform: scale(1.1);
+        }
+
+        .movie-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .movie-card:hover .movie-overlay {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            color: #e9bb06;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .service-card:hover {
+            background: rgba(212,175,55,0.1);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--black);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            position: relative;
+            border-left: 4px solid var(--gold);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--gray);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212,175,55,0.3);
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--black);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.5);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                 <img src="logo (1).png" alt="company logo" width="70">
+                 <span>Rishabam Production</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#movies" class="nav-link">Movies</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">BTS</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <!-- Replace with your cinematic background video -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-cold-looking-urban-street-aerial-shot-1002-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Rishabam Production</h1>
+            <h3>Crafting Stories That Resonate </h3>
+            <p>At Rishabam Productions, we believe in the power of visual storytelling. From concept to completion, we bring your vision to life with cinematic excellence, creative integrity, and technical expertise. Whether you're producing a feature film, a commercial, or digital content, we deliver impactful productions tailored to captivate your audience.</p>
+            <a href="#contact" class="cta-button">Work With Us</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about reveal">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded with a passion for storytelling and a commitment to quality, Rishabam Productions is a full-service media production company.
+                    Our team of seasoned creatives, directors, cinematographers, editors, and producers collaborates seamlessly to deliver compelling content across platforms.
+                    From indie filmmakers to global brands, we serve a diverse clientele with integrity, innovation, and imagination.</p>
+                </div>
+                <div class="mission-section">
+                    <h3 class="mission-title">Our Mission</h3>
+                    <p class="mission-text">To elevate ideas through powerful visual storytelling, making every project a memorable experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section id="movies" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Our Movies</h2>
+            <div class="movies-grid">
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1489599150841-5bf4c676e9c4?w=400&h=600&fit=crop" alt="Movie 1" class="movie-poster">
+                    <div class="movie-overlay">
+                        <h3 class="movie-title">Eternal Horizon</h3>
+                        <p>2025 | Sci-Fi Drama</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop" alt="Movie 2" class="movie-poster">
+                    <div class="movie-overlay">
+                        <h3 class="movie-title">Shadows of Tomorrow</h3>
+                        <p>2024 | Thriller</p>
+                    </div>
+                </div>
+               
+                </div>
+              
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="about reveal">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎬</div>
+                    <h3>Film Production</h3>
+                    <p>We manage end-to-end production for films and TV, supporting creators and studios with high-quality results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📸</div>
+                    <h3>Commercials & Advertisements</h3>
+                    <p>We create high-impact commercials for TV, web, and social media—helping brands launch, grow, and connect through compelling content.
+</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Post Production</h3>
+                    <p>From precise editing and color grading to sound design and VFX, our post-production team polishes your footage into a finished masterpiece.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Digital & Social Media Content</h3>
+                    <p>Strategic worldwide distribution across theaters, streaming platforms, and festivals.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎤</div>
+                    <h3>Music Videos</h3>
+                    <p>We turn music into powerful visuals, partnering with artists and producers to create dynamic videos that capture your track’s energy.</p>
+                </div>
+                 <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Corporate Films & Branding Videos</h3>
+                    <p>We produce corporate videos that showcase your brand with clarity and impact—ideal for pitches, training, internal communication, and storytelling.</p>
+                 </div>
+                    <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h3>Event Coverage & Live Production</h3>
+                    <p>We deliver high-quality event coverage—capturing conferences, launches, performances, and weddings with clarity and style.</p>
+                 </div>
+                   <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Event Coverage & Live Production</h3>
+                    <p>We deliver high-quality event coverage—capturing conferences, launches, performances, and weddings with clarity and style.</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind The Scenes -->
+    <section id="gallery" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Behind The Scenes</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background: linear-gradient(45deg, #1a1a1a, #333);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #2a1a1a, #433);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #1a2a1a, #3343);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #3a1a1a, #6343);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #1a3a1a, #7363);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #4a1a1a, #8343);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="about reveal">
+        <div class="container">
+            <h2 class="section-title">What They Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"Silver Frame Studios transformed my vision into a cinematic masterpiece. Their attention to detail is unmatched."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div>
+                            <strong>James Donovan</strong><br>
+                            <small>Director, Eternal Horizon</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"The best production team I've worked with. Professional, creative, and delivered ahead of schedule."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SL</div>
+                        <div>
+                            <strong>Sarah Lin</strong><br>
+                            <small>Lead Actress</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Their VFX work elevated our film to Oscar-contending quality. Highly recommended for serious filmmakers."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <strong>Michael Reyes</strong><br>
+                            <small>Producer</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact reveal">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Project Type">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+                <div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5024735222796!2d80.249964974548!3d13.067309812773749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52666d1ccee57f%3A0x2113fa0e6314b216!2sHariram%20building%2C%2037%2C%20College%20Rd%2C%20Chinmaya%20Nagar%20Stage%201%2C%20Nungambakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600006!5e0!3m2!1sen!2sin!4v1771674482632!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8;">Chennai, Tamil Nadu, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">📹</a>
+                <a href="#" class="social-link">💼</a>
+            </div>
+            <p>&copy; 2026 Rishabam Production. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10,10,10,0.98)';
+            } else {
+                navbar.style.background = 'rgba(10,10,10,0.95)';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Movie card hover sound effect (visual feedback)
+        document.querySelectorAll('.movie-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                heroVideo.style.transform = `translateY(${scrolled * 0.5}px) translateX(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
