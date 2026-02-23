@@ -42,12 +42,12 @@
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 10px 1px ;
-            display: flex;
-            justify-content: space-between;
-            align-items:center;
-            padding: 0 2rem;
+          max-width: 1200px;
+          margin: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
         
         }
 
@@ -67,9 +67,6 @@
         }
 
         .nav-menu {
-            position: absolute;
-            top: 30px;
-            right: 40px;
             display: flex;
             gap: 30px;
             list-style: none;
@@ -118,14 +115,14 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            padding-bottom: 250px;
+             position: relative;
+             height: 100vh;
+             display: flex;
+             align-items: center;        /* Vertical center */
+             justify-content: center;    /* Horizontal center */
+             text-align: center;
+             padding: 0 20px;
+             overflow: hidden;
         }
 
         .hero::before {
@@ -161,15 +158,14 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 1rem);
-            font-style: oblique;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            padding-top: 300px;
-            color: var(--gold);
+           font-size: clamp(2.5rem, 5vw, 3.5rem);
+           font-style: oblique;
+           font-weight: 600;
+           margin-bottom: 1.5rem;
+          color: var(--gold);
         }
         .hero h3 {
-            font-size: 25px;
+            font-size: 1.5rem;
             font-style: italic;
             font-weight: 600;
             padding-bottom: 20px;
@@ -177,36 +173,33 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
-            text-decoration: underline rgb(237, 216, 100)
+            margin-bottom: 1.5rem;
         }
        
     
         .hero p {
-            font-size: 23px;
-            font-style: italic;
-            font-weight: 400;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
             background: linear-gradient(45deg, var(--white), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            padding-top: 10px;
-               
         }
 
         .cta-button {
             position: relative;
             display: inline-block;
-            background: var(--gold);
+            background: #deb820;;
             color: var(--black);
-            padding: 1rem 2.5rem;
+            padding: 14px 40px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
-            padding-bottom: 20px 80px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .cta-button:hover {
@@ -227,11 +220,13 @@
 
         /* About */
         .about {
-            background: var(--black);
+             background: var(--black);
+             padding: 100px 20px;
+             text-align: center;
         }
 
         .section-title {
-            font-size: clamp(1.5rem, 3vw, 1rem);
+            font-size: clamp(2rem, 4vw, 2.8rem);
             text-align: center;
             margin-bottom: 3rem;
             color: var(--gold);
@@ -251,53 +246,45 @@
         }
 
          .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #f4f5f8;
-            max-width: 900px;
-            margin: 0 auto 30px;
-            text-align: center;
-            font-weight: 600;
+              max-width: 850px;
+              margin: 0 auto 50px;
+              font-size: 1.2rem;
+              line-height: 1.8;
+              color: #f4f4f4;
         }
         .about-text p {
             bottom: 20px;
             font-style: italic;
         }
         
-        .mission-section {
+       .mission-section {
+            max-width: 750px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 40px;
-        }
+}
 
-        .mission-title {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
+       .mission-title {
+            font-size: 1.8rem;
+            color: #e9bb06;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+}
+
         .mission-title::after {
-            content: '';
-            position: absolute;
-            bottom: 165px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gold);
-        }
+             content: '';
+             display: block;
+             width: 60%;
+             height: 3px;
+             background: var(--gold);
+             margin: 6px auto 0;
+}
 
         .mission-text {
-            font-size: 1.3rem;
-            color: #f7f8fa;
-            font-style: italic;
-            font-weight: 600;
-            background: linear-gradient(135deg, #ffffff 0%, #fffeff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
+             font-size: 1.2rem;
+             margin-top: 20px;
+            line-height: 1.7;
+}
 
         /* Movies Grid */
         .movies-grid {
@@ -546,42 +533,78 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
 
-            .nav-menu {
-                position: fixed;
-                left: -150%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--black);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.5);
-                padding: 2rem 0;
-            }
+    .hamburger {
+        display: flex;
+    }
 
-            .nav-menu.active {
-                left: 0;
-            }
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--black);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+    }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+    .nav-menu.active {
+        left: 0;
+    }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-            section {
-                padding: 60px 0;
-            }
-        }
+    .hero h3 {
+        font-size: 18px;
+    }
 
-        /* Scroll animations */
+    .hero p {
+        font-size: 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movies-grid,
+    .services-grid,
+    .gallery-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+        .about {
+        padding: 70px 20px;
+    }
+
+    .about-text,
+    .mission-text {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+    /* Scroll animations */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -670,12 +693,7 @@
                         <p>2024 | Thriller</p>
                     </div>
                 </div>
-               
-                </div>
-              
-                </div>
-            </div>
-        </div>
+             </div>
     </section>
 
     <!-- Services Section -->
