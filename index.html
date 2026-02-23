@@ -16,7 +16,7 @@
             --gold: #d4af37;
             --gold-dark: #b8941f;
             --gray: #333;
-            --white: #fff;
+            --white: #fffbfb;
             --shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
@@ -115,14 +115,10 @@
 
         /* Hero Section */
         .hero {
-             position: relative;
-             height: 100vh;
-             display: flex;
-             align-items: center;        /* Vertical center */
-             justify-content: center;    /* Horizontal center */
-             text-align: center;
-             padding: 0 20px;
-             overflow: hidden;
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -137,16 +133,13 @@
         }
 
         .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 0;
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               z-index: -1;
         }
 
         .hero-content {
@@ -287,33 +280,67 @@
 }
 
         /* Movies Grid */
+        #movies {
+            background-color: #1f1f1f;  /* Dark grey */
+            color: white;              /* Makes text visible */
+            padding: 80px 0;
+}
+
         .movies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 5rem;
             margin-top: 4rem;
-        }
+             grid-auto-rows: 600px;
+}
 
-        .movie-card {
+        .movie-card1 {
             position: relative;
-            height: 400px;
-            border-radius: 15px;
+            height: 500px;
+            border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             background: var(--gray);
+            overflow: hidden;
         }
 
-        .movie-card:hover {
+        .movie-card1:hover {
             transform: translateY(-15px) scale(1.02);
             box-shadow: var(--shadow);
         }
+        .movie-card1 img {
+             width: 100%;
+             height: 120%;        /* fixed poster height */
+             object-fit: cover;    /* prevents stretching */
+             display: block;
+        }  
+         .movie-card2 {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--gray);
+            overflow: hidden;
+        }
+         .movie-card2:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+          .movie-card2 img {
+             width: 100%;
+             height: 100%;        /* fixed poster height */
+             object-fit: cover;    /* prevents stretching */
+             display: block;
+        }  
 
         .movie-poster {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+           display: block;
         }
 
         .movie-card:hover .movie-poster {
@@ -325,7 +352,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
             padding: 2rem 1.5rem 1.5rem;
             transform: translateY(100%);
             transition: transform 0.4s ease;
@@ -381,6 +408,11 @@
         }
 
         /* Gallery */
+          #gallery {
+            background-color: #1f1f1f;  /* Dark grey */
+            color: white;              /* Makes text visible */
+            padding: 80px 0;
+}
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -646,7 +678,7 @@
     <section id="home" class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
             <!-- Replace with your cinematic background video -->
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-cold-looking-urban-street-aerial-shot-1002-large.mp4" type="video/mp4">
+            <source src="videos/RP MK 002.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>Welcome to Rishabam Production</h1>
@@ -679,18 +711,18 @@
         <div class="container">
             <h2 class="section-title">Our Movies</h2>
             <div class="movies-grid">
-                <div class="movie-card">
-                    <img src="https://images.unsplash.com/photo-1489599150841-5bf4c676e9c4?w=400&h=600&fit=crop" alt="Movie 1" class="movie-poster">
+                <div class="movie-card1">
+                    <img src="WhatsApp Image 2025-11-30 at 7.54.29 AM (1).jpeg" alt="Movie 1" class="movie-poster">
                     <div class="movie-overlay">
-                        <h3 class="movie-title">Eternal Horizon</h3>
-                        <p>2025 | Sci-Fi Drama</p>
+                        <h3 class="movie-title">The Truth</h3>
+                        <p>2026 | Thriller</p>
                     </div>
                 </div>
-                <div class="movie-card">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop" alt="Movie 2" class="movie-poster">
+                <div class="movie-card2">
+                    <img src="pro 2 (1).png" alt="Movie 2" class="movie-poster">
                     <div class="movie-overlay">
-                        <h3 class="movie-title">Shadows of Tomorrow</h3>
-                        <p>2024 | Thriller</p>
+                        <h3 class="movie-title">Coming Soon...</h3>
+                        <p>Loading</p>
                     </div>
                 </div>
              </div>
@@ -751,7 +783,9 @@
         <div class="container">
             <h2 class="section-title">Behind The Scenes</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" style="background: linear-gradient(45deg, #1a1a1a, #333);"></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #1a1a1a, #333);">
+                <img src="">
+                </div>
                 <div class="gallery-item" style="background: linear-gradient(45deg, #2a1a1a, #433);"></div>
                 <div class="gallery-item" style="background: linear-gradient(45deg, #1a2a1a, #3343);"></div>
                 <div class="gallery-item" style="background: linear-gradient(45deg, #3a1a1a, #6343);"></div>
