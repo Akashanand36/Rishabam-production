@@ -28,6 +28,14 @@
             scroll-behavior: smooth;
         }
 
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 90px;   /* define exact height */
+            z-index: 1000;
+}
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -285,107 +293,105 @@
             color: white;              /* Makes text visible */
             padding: 80px 0;
 }
-
-        .movies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 5rem;
-            margin-top: 4rem;
-            grid-auto-rows: 600px;
-}
-
-        .movie-card1 {
-            position: relative;
-            height: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--gray);
-            overflow: hidden;
-        }
-
-        .movie-card1:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow);
-        }
-        .movie-card1 img {
-             width: 100%;
-             height: 120%;        /* fixed poster height */
-             object-fit: cover;    /* prevents stretching */
-             display: block;
-        }  
-         .movie-card2 {
-            position: relative;
-            width: 600px;
-            height: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--gray);
-            overflow: hidden;
-        }
-         .movie-card2:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow);
-        }
-          .movie-card2 img {
-             width: 100%;
-             height: 100%;        /* fixed poster height */
-             object-fit: cover;    /* prevents stretching */
-             display: block;
-        }  
-
-        .movie-poster {
-            width: 100%;
-            height: 100%;
-           border-radius: 10px;
-           display: block;
-        }
-
-        .movie-card1:hover .movie-poster,
-        .movie-card2:hover .movie-poster {
-            transform: scale(1.1);
-        }
-
-        .movie-overlay,
-        .movie-overlay2 {
-         position: absolute;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        text-align: center;
-
-        opacity: 0;
-        transition: 0.4s ease;
-        }
-
-        .movie-card1:hover .movie-overlay,
-        .movie-card2:hover .movie-overlay2
-         {
-            opacity: 2;
-
-        }
-
-        .movie-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
         .section-title {
             color: #e9bb06;
         }
 
+        /* ===== Movies Section ===== */
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Movie Card */
+.movie-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Poster Image */
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Overlay */
+.movie-overlay {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 1rem;
+
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+/* Hover Effects (Desktop) */
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+/* Title */
+.movie-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================= */
+/* 📱 Mobile Responsive */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .movies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .movie-title {
+        font-size: 1.2rem;
+    }
+
+   @media (hover: hover) {
+    .movie-card:hover .movie-overlay {
+        opacity: 1;
+    }
+
+    .movie-card:hover .movie-poster {
+        transform: scale(1.05);
+    }
+}
+}
+/* ============================= */
+/* 🖥 Large Desktop */
+/* ============================= */
+
+@media (min-width: 1200px) {
+    .movies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
         /* Services */
         .services-grid {
             display: grid;
@@ -601,8 +607,16 @@
         left: 0;
     }
 
+   body {
+        padding-top: 100px;
+    }
+  .hero {
+        padding: 0 20px;
+        text-align: center;
+    }
     .hero h1 {
         font-size: 2rem;
+        padding-top: 20px;
     }
 
     .hero h3 {
@@ -726,16 +740,16 @@
         <div class="container">
             <h2 class="section-title">Our Movies</h2>
             <div class="movies-grid">
-                <div class="movie-card1">
+                <div class="movie-card">
                     <img src="WhatsApp Image 2025-11-30 at 7.54.29 AM (1).jpeg" alt="Movie 1" class="movie-poster">
                     <div class="movie-overlay">
                         <h3 class="movie-title">The Truth</h3>
                         <p>2026 | Thriller</p>
                     </div>
                 </div>
-                <div class="movie-card2">
+                <div class="movie-card">
                     <img src="pro 2 (1).png" alt="Movie 2" class="movie-poster">
-                    <div class="movie-overlay2">
+                    <div class="movie-overlay">
                         <h3 class="movie-title">Coming Soon....</h3>
                         <p></p>
                     </div>
