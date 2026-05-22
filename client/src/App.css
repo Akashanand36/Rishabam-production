@@ -458,8 +458,20 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    height: 70px;
+    padding: 0 20px;
     position: fixed;
+  }
+   body {
+    padding-top: 70px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
+
+  .logo-img {
+    width: 45px;
   }
 
   /* Mobile Menu Button */
