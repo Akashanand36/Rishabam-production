@@ -459,7 +459,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    position: relative;
+    position: fixed;
   }
 
   /* Mobile Menu Button */
