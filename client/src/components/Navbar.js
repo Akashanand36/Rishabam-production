@@ -18,7 +18,7 @@ function Navbar() {
         className="menu-btn"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        
+        ☰
       </div>
 
       {/* Navigation Links */}

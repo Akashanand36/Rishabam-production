@@ -452,66 +452,135 @@ body {
 /* ===== FOOTER ===== */
 
 /* ===== RESPONSIVE ===== */
+/* ===== NAVBAR ===== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 30px;
+  background: #000;
+
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Prevent content hide behind navbar */
+body {
+  padding-top: 80px;
+}
+
+/* Hide mobile menu button on desktop */
+.menu-btn {
+  display: none;
+}
+
+/* Desktop Menu */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f5c518;
+}
+
+/* ===== MOBILE VIEW ===== */
+
 @media (max-width: 768px) {
 
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 70px;
     padding: 0 20px;
-    position: fixed;
   }
-   body {
+
+  body {
     padding-top: 70px;
   }
 
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   .logo-text {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .logo-img {
-    width: 45px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
   }
 
-  /* Mobile Menu Button */
+  /* Show hamburger only on mobile */
   .menu-btn {
     display: block;
-    font-size: 28px;
+    font-size: 30px;
     color: #f5c518;
     cursor: pointer;
+    z-index: 1100;
   }
 
-  /* Hide menu initially */
+  /* Mobile Menu */
   .nav-links {
-    position: absolute;
+    position: fixed;
     top: 70px;
-    right: 20px;
-    background: #111;
-    width: 220px;
-    border-radius: 12px;
-    padding: 20px;
-    display: none;
+    right: -100%;
+
+    width: 240px;
+
+    display: flex;
     flex-direction: column;
     gap: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    z-index: 999;
+
+    background: #111;
+    padding: 25px 20px;
+
+    border-radius: 0 0 0 15px;
+
+    transition: 0.4s ease;
+
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+
+    z-index: 1000;
   }
 
-  /* Show menu */
+  /* Active Menu */
   .nav-links.active {
-    display: flex;
+    right: 0;
   }
 
   .nav-links li {
-    margin: 0;
+    width: 100%;
   }
 
   .nav-links a {
+    font-size: 18px;
     color: white;
-    text-decoration: none;
-    font-size: 20px;
-    transition: 0.3s;
+    width: 100%;
+    display: block;
   }
 
   .nav-links a:hover {
