@@ -451,28 +451,65 @@ body {
 
 /* ===== FOOTER ===== */
 
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
   .navbar {
-    flex-direction: column;
-    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
   }
 
+  /* Mobile Menu Button */
+  .menu-btn {
+    display: block;
+    font-size: 28px;
+    color: #f5c518;
+    cursor: pointer;
+  }
+
+  /* Hide menu initially */
   .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #111;
+    width: 220px;
+    border-radius: 12px;
+    padding: 20px;
+    display: none;
     flex-direction: column;
-    margin-top: 10px;
+    gap: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    z-index: 999;
+  }
+
+  /* Show menu */
+  .nav-links.active {
+    display: flex;
   }
 
   .nav-links li {
-    margin: 10px 0;
+    margin: 0;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #f5c518;
   }
 
   .section {
     padding: 50px 20px;
   }
 }
-
 /* ===== HERO SECTION ===== */
 /* ===== HERO VIDEO ===== */
 .hero {
